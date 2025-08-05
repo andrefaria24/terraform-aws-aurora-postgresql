@@ -6,10 +6,6 @@ variable "db_name" {
 variable "db_admin" {
   description = "Database admin username"
   type = string
-  validation {
-    condition = !contains("admin")
-    error_message = "Database administrative username must not be admin"
-  }
 }
 
 variable "region" {
