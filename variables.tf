@@ -7,8 +7,8 @@ variable "region" {
   description = "AWS Region"
   type        = string
   validation {
-    condition     = contains(["us-east-1", "us-east-2", "us-west-2", "eu-west-1"], var.region)
-    error_message = "Supported regions: us-east-1, us-east-2, us-west-2, eu-west-1"
+    condition     = contains(["us-east-1", "us-east-2", "us-west-1", "us-west-2"], var.region)
+    error_message = "Supported regions: us-east-1, us-east-2, us-west-1, us-west-2"
   }
 }
 
