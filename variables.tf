@@ -3,6 +3,15 @@ variable "db_name" {
   type        = string
 }
 
+variable "db_admin" {
+  description = "Database admin username"
+  type = string
+  validation {
+    condition = !contains("admin")
+    error_message = "Database administrative username must not be admin"
+  }
+}
+
 variable "region" {
   description = "AWS Region"
   type        = string

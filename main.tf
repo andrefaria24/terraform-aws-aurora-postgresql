@@ -10,7 +10,7 @@ resource "random_password" "master" {
 resource "aws_rds_cluster" "aurora_pg" {
   cluster_identifier      = "aurora-${var.db_name}"
   engine                 = "aurora-postgresql"
-  master_username        = "admin"
+  master_username        = var.db_admin
   master_password        = random_password.master.result
   database_name          = var.db_name
   skip_final_snapshot    = true
