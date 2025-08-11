@@ -1,3 +1,8 @@
+variable "TFE_ORG_NAME" {
+  type      = string
+  sensitive = true
+}
+
 variable "db_name" {
   description = "Database Name"
   type        = string

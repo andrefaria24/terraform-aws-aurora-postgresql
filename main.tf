@@ -2,6 +2,17 @@ provider "aws" {
   region = var.region
 }
 
+data "terrafom_remote_state" "aws-networking" {
+  backend = "remote"
+
+  config = {
+    organization = var.TFE_ORG_NAME
+    workspaces = {
+      name = "aws-networking"
+    }
+  }
+}
+
 resource "random_password" "master" {
   length  = 16
   special = true
@@ -13,6 +24,7 @@ resource "aws_rds_cluster" "aurora_pg" {
   master_username        = var.db_admin
   master_password        = random_password.master.result
   database_name          = var.db_name
+  db_subnet_group_name = data.terrafom_remote_state.aws-networking.outputs.db_subnet_group_name
   skip_final_snapshot    = true
 }
 
