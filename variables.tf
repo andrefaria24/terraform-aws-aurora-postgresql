@@ -26,7 +26,7 @@ variable "instance_class" {
   description = "Instance Size"
   type        = string
   validation {
-    condition     = contains(["db.r6g.large", "db.r6g.xlarge", "db.r6g.2xlarge"], var.instance_class)
-    error_message = "Supported sizes: db.r6g.large, db.r6g.xlarge, db.r6g.2xlarge"
+    condition     = contains(["db.t3.micro"], var.instance_class)
+    error_message = "Supported sizes: db.t3.micro"
   }
 }
