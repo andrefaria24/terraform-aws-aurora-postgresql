@@ -1,9 +1,9 @@
-output "admin_username" {
+output "db_username" {
   description = "The admin username"
   value       = aws_db_instance.db.username
 }
 
-output "admin_password" {
+output "db_password" {
   description = "The admin password"
   value       = resource.random_password.db_password.result
   sensitive   = true
