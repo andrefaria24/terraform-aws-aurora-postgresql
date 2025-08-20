@@ -49,7 +49,7 @@ resource "aws_db_instance" "db" {
   username               = var.db_admin
   password               = resource.random_password.db_password.result
   db_subnet_group_name   = data.terraform_remote_state.aws-networking.outputs.db_subnet_group_name
-  vpc_security_group_ids = [data.terraform_remote_state.aws-networking.outputs.psql_security_group_id.id]
+  vpc_security_group_ids = [data.terraform_remote_state.aws-networking.outputs.psql_security_group_id]
   parameter_group_name   = aws_db_parameter_group.db_param_group.name
   publicly_accessible    = true
   skip_final_snapshot    = true
