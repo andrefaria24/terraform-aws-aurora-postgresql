@@ -18,6 +18,6 @@ output "db_name" {
 
 output "db_connection_string" {
   description = "Database connection string"
-  value = "postgresql://${aws_rds_cluster.aurora_pg.master_username}:${random_password.master.result}@${aws_rds_cluster.aurora_pg.endpoint}:${aws_rds_cluster.aurora_pg.port}/${var.db_name}"
-  sensitive = true
+  value       = "postgresql://${aws_rds_cluster.aurora_pg.master_username}:${random_password.master.result}@${aws_rds_cluster.aurora_pg.endpoint}:${aws_rds_cluster.aurora_pg.port}/${var.db_name}"
+  sensitive   = true
 }

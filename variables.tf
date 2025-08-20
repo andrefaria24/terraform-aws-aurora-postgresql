@@ -1,6 +1,6 @@
 variable "TFE_ORG_NAME" {
-  type      = string
-  sensitive = true
+  type    = string
+  default = "acfaria-hashicorp"
 }
 
 variable "db_name" {
@@ -10,7 +10,7 @@ variable "db_name" {
 
 variable "db_admin" {
   description = "Database admin username"
-  type = string
+  type        = string
 }
 
 variable "region" {
