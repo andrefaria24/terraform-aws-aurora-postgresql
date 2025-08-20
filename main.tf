@@ -15,7 +15,7 @@ data "terraform_remote_state" "aws-networking" {
 
 resource "random_password" "db_password" {
   length  = 16
-  special = true
+  special = false
 }
 
 resource "random_string" "random_str" {
