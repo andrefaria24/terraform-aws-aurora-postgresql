@@ -1,23 +1,30 @@
 output "admin_username" {
   description = "The admin username"
-  value       = aws_rds_cluster.aurora_pg.master_username
-  sensitive   = true
+  value       = aws_db_instance.db.username
 }
 
 output "admin_password" {
   description = "The admin password"
-  value       = random_password.master.result
+  value       = resource.random_password.db_password.result
   sensitive   = true
+}
+
+output "db_hostname" {
+  description = "Database hostname"
+  value       = resource.aws_db_instance.db.address
 }
 
 output "db_name" {
   description = "Database instance name"
   value       = var.db_name
-  sensitive   = true
 }
 
-output "db_connection_string" {
-  description = "Database connection string"
-  value       = "postgresql://${aws_rds_cluster.aurora_pg.master_username}:${random_password.master.result}@${aws_rds_cluster.aurora_pg.endpoint}:${aws_rds_cluster.aurora_pg.port}/${var.db_name}"
-  sensitive   = true
+output "db_port" {
+  description = "Database port"
+  value       = resource.aws_db_instance.db.port
+}
+
+output "db_connection_endpoint" {
+  description = "Database connection endpoint"
+  value       = resource.aws_db_instance.db.endpoint
 }
